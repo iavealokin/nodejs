@@ -1,0 +1,42 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/styles/form.css">
+
+<% for (let i=0;i<quest.length;i++){ %>
+<div id="form" class="center">
+<p name="<%= (quest[i][0]) %> "> <%= (quest[i][1]) %>   <input id ="id<%= (quest[i][0]) %>" class="checkbox" type="checkbox"\></p>
+
+</div>
+
+ <% } %>
+<button type="button" class="btn btn-primary" onclick="nodeFunction()">Сохранить анкету</button>
+
+  <form class="comparisonForm" action="/logout" method="get">
+ <input type="submit"class="btn btn-primary" value="Выйти"/>
+ </form>
+<script>
+function nodeFunction(){
+	var checkboxes = document.getElementsByClassName('checkbox');
+  var checkboxesChecked = `{"answers":[`; // можно в массиве их хранить, если нужно использовать 
+  for (var index = 0; index < checkboxes.length; index++) {
+  if (checkboxes[index].checked){
+checkboxesChecked=`${checkboxesChecked} {"id":"${checkboxes[index].id.substr(2)}","val":"1"},`
+}else{
+	checkboxesChecked=`${checkboxesChecked} {"id":"${checkboxes[index].id.substr(2)}","val":"0"},`
+}
+  }
+ checkboxesChecked =checkboxesChecked.substring(0, checkboxesChecked.length - 1)
+  checkboxesChecked=`${checkboxesChecked}]}`
+  console.log(checkboxesChecked)
+
+$.ajax({
+  url: '/comparison',
+  type: "POST",
+  data: checkboxesChecked,
+   contentType:'application/json; charset = UTF-8'
+});
+
+window.location.pathname='/comparison'
+}
+</script>

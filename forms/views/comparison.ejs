@@ -1,0 +1,25 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="styles/login.css">
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+      <!-- Login Form -->
+      Сравнение с другим пользователем
+    <form class="comparisonForm" action="/comparisonform" method="post">
+      <input type="text" id="login" class="fadeIn second" name="comparabaleUser" placeholder="Введите id пользователя для сравнения">
+      <input type="submit" class="fadeIn fourth" value="Сравнить анкету">
+    </form>
+     <span class="WrongPassword"> <%=(text) %> </span>
+      <form  class="comparisonForm" action="/forms_list" method="get">
+ <input type="submit" class="fadeIn fourth" value="Редактировать анкету">
+ </form>
+    <form class="comparisonForm" action="/logout" method="get">
+ <input type="submit" class="fadeIn fourth" value="Выйти">
+ </form>
+
+  </div>
+</div>

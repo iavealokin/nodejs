@@ -1,0 +1,16 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="/styles/forms_list.css">
+<h2 align="center">Выберите анкету:</h2>
+<div class="center" style="width:450px;align:center;">
+<ol class="rectangle"><% for(let i=0;i<test.length;i++){ %>
+  <li><a href="/showform?id=<%= (test[i][0]) %>" > <%= (test[i][1]) %></a></li>
+<%  console.log(test[i][1])
+} %>
+  
+</ol>
+</div>
+  <form class="comparisonForm" action="/logout" method="get">
+<input type="submit"class="btn btn-primary" value="Выйти"/>
+ </form>
